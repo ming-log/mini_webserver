@@ -9,7 +9,7 @@ def set_func(func):
         print("-----这是权限验证1-----")
         print("-----这是权限验证2-----")
         # func(args, kwargs)  # 不行，相当于传递了2个参数；1个元组，1个字典
-        return func(*args, **kwargs)  # 拆包
+        return func(*args, **kwargs)  # 拆包, 加了return不影响不需要返回值的函数
     return call_func
 
 
