@@ -15,7 +15,7 @@ from dynamic import mini_frame
 import sys
 
 class WSGISever(object):
-    def __init__(self, port):
+    def __init__(self, port, app):
         # 创建socket
         self.tcp_server_socket = socket(AF_INET, SOCK_STREAM)
         # 设置当服务器先close 即服务器端4次握手之后资源能够立即释放，这样就保证了，下次运行程序时，可以立即使用该端口
@@ -28,6 +28,7 @@ class WSGISever(object):
 
         # 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了
         self.tcp_server_socket.listen(128)  # 允许很多客户端连接
+        self.application = app
 
     def work(self, client_socket, client_addr):
         # 接收对方发送过来的数据
@@ -72,7 +73,7 @@ class WSGISever(object):
             # body = 'hahaha %s' % time.localtime()
             env = dict()
             env['PATH_INFO'] = page_name
-            body = mini_frame.application(env, self.set_response_header)
+            body = self.application(env, self.set_response_header)
 
             header = 'HTTP/1.1 %s\r\n' % self.status
             for temp in self.headers:
@@ -103,15 +104,36 @@ class WSGISever(object):
 
 def main():
     input_data = sys.argv
-    if len(input_data) == 2:
+    if len(input_data) == 3:
         try:
-            port = int(input_data[1])
+            port = int(input_data[1])  # 7890
+            frame_app_name = input_data[2]  # mini_frame:application
         except Exception as ret:
             print("输入的端口有误，必须为数字.")
+            return
     else:
         print("输入的格式有误，请按照如下格式输入。")
-        print("python xxx.py 7890")
-    wsgisever = WSGISever(port)
+        print("python xxx.py 7890 mini_frame:application")
+        return
+
+    ret = re.match(r"([^:]+):(.*)", frame_app_name)
+    if ret:
+        frame_name = ret.group(1)
+        app_name = ret.group(2)
+    else:
+        print("输入的格式有误，请按照如下格式输入。")
+        print("python xxx.py 7890 mini_frame:application")
+        return
+
+    with open("web_sever.conf", "r") as f:
+        conf_info = eval(f.read())
+
+    # import frame_name --->找frame_name.py，找不到
+    sys.path.append(conf_info["dynamic_path"])  # 添加环境变量
+    frame = __import__(frame_name)  # 返回值标记这个导入的模块
+    app = getattr(frame, app_name)  # 此时app就指向了dynamic.mini_frame模块中的函数
+
+    wsgisever = WSGISever(port, app)
     wsgisever.run_forever()
 
 
