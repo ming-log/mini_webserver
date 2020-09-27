@@ -82,7 +82,7 @@ class WSGISever(object):
             client_socket.send(response.encode('utf-8'))
 
         client_socket.close()
-        print('---- 客户%s服务完毕 ----' % str(client_addr))
+        # print('---- 客户%s服务完毕 ----' % str(client_addr))
         # 关闭为这个客户端服务的套接字,只要关闭了，就意味着不能再为这个客户端服务了，如果还需要服务，只能再次访问
 
     def set_response_header(self, status, headers):

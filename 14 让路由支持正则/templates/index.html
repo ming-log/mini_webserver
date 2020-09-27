@@ -14,7 +14,7 @@
                 $("input[name='toAdd']").each(function(){  
                     var currentAdd = $(this);  
                     currentAdd.click(function(){  
-                        code = $(this).attr("systemIdVaule"); 
+                        code = $(this).attr("systemidvalue");
                         // alert("/add/" + code + ".html"); 
                         $.get("/add/" + code + ".html", function(data, status){
                             alert("数据: " + data + "\n状态: " + status);

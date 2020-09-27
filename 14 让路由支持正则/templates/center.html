@@ -14,14 +14,13 @@
                 $("input[name='toDel']").each(function(){  
                     var currentAdd = $(this);  
                     currentAdd.click(function(){  
-                        code = $(this).attr("systemIdVaule"); 
+                        code = $(this).attr("systemidvalue");
                         // alert("/del/" + code + ".html"); 
                         $.get("/del/" + code + ".html", function(data, status){
                             alert("数据: " + data + "\n状态: " + status);
-                        });
-                        window.location.reload()
-                    });  
-                });  
+                        });window.location.reload();
+                    });
+                });
         });
     </script>
 </head>
