@@ -1,0 +1,7 @@
+2020-09-28 12:42:47,079 - 02 logging模块--保存到文件.py[line:27] - WARNING: 这是 loggging a warning message
+2020-09-28 12:42:47,099 - 02 logging模块--保存到文件.py[line:28] - ERROR: 这是 an loggging error message
+2020-09-28 12:42:47,100 - 02 logging模块--保存到文件.py[line:29] - CRITICAL: 这是 loggging critical message
+2020-09-28 12:47:26,923 - 03 logging模块--既输出到终端又保存到文件.py[line:31] - INFO: 这是 logger info message
+2020-09-28 12:47:26,924 - 03 logging模块--既输出到终端又保存到文件.py[line:32] - WARNING: 这是 logger warning message
+2020-09-28 12:47:26,924 - 03 logging模块--既输出到终端又保存到文件.py[line:33] - ERROR: 这是 logger error message
+2020-09-28 12:47:26,924 - 03 logging模块--既输出到终端又保存到文件.py[line:34] - CRITICAL: 这是 logger critical message

@@ -1,0 +1,8 @@
+2020-09-28 13:04:34,869 - mini_frame.py[line:210] - INFO: 访问的是:/index.html
+2020-09-28 13:04:36,128 - mini_frame.py[line:210] - INFO: 访问的是:/center.html
+2020-09-28 13:04:36,450 - mini_frame.py[line:210] - INFO: 访问的是:/index.html
+2020-09-28 13:04:37,941 - mini_frame.py[line:210] - INFO: 访问的是:/add/000039.html
+2020-09-28 13:04:39,395 - mini_frame.py[line:210] - INFO: 访问的是:/add/000007.html
+2020-09-28 13:04:40,695 - mini_frame.py[line:210] - INFO: 访问的是:/center.html
+2020-09-28 13:04:41,975 - mini_frame.py[line:210] - INFO: 访问的是:/del/000007.html
+2020-09-28 13:04:41,976 - mini_frame.py[line:210] - INFO: 访问的是:/center.html
